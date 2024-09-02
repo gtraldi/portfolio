@@ -1,0 +1,134 @@
+/* Reset básico e configuração de fonte */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    line-height: 1.6;
+    background: #f4f4f4;
+    color: #333;
+}
+
+/* Estilos do header */
+header {
+    background: #222;
+    color: #fff;
+    padding: 1rem 2rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Estilos do menu de navegação */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background: #444;
+    color: #ddd;
+}
+
+/* Estilos das seções */
+section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Estilos específicos para cada seção */
+section#home {
+    background: #ffffff;
+}
+
+section#home h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+section#home p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+section#about p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1rem;
+    color: #666;
+}
+
+section#about a {
+    color: #007bff;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+section#about a:hover {
+    color: #0056b3;
+}
+
+section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+section#projects ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+}
+
+section#projects ul li {
+    margin: 0.5rem 0;
+}
+
+section#projects ul li a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+section#projects ul li a:hover {
+    color: #0056b3;
+}
+
+/* Estilos do footer */
+footer {
+    background: #222;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    box-shadow: 0 -4px 6px rgba(0,0,0,0.1);
+}
+
+footer p {
+    margin: 0;
+}
