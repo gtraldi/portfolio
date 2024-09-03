@@ -4,16 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfólio - Meus Projetos</title>
-    <link rel="stylesheet" href="styles/projects.css">
+    <link rel="stylesheet" href="../static/projects.css">
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="index.html#about">Sobre</a></li>
+                <li><a href="home">Inicio</a></li>
+                <li><a href="home#about">Sobre</a></li>
                 <li><a href="#projects">Projetos</a></li>
-                <li><a href="contact.html">Contato</a></li>
+                <li><a href="contact">Contato</a></li>
             </ul>
         </nav>
     </header>
@@ -23,7 +23,7 @@
         <ul>
             <li>
                 <div class="project-item">
-                    <img src="img/logo_viagens.jpg" alt="logo">
+                    <img src="{{url_for('static', filename='logo_viagens.jpg')}}" alt="logo">
                     <div class="project-details">
                         <a href="https://github.com/gtraldi/travel-assistant-api" target="_blank">API Assistente de Viagens</a>
                         <p>Desenvolvido com Python e Flask API</p>
@@ -32,7 +32,7 @@
             </li>
             <li>
                 <div class="project-item">
-                    <img src="img/logo_data_center.png" alt="logo">
+                    <img src="{{url_for('static', filename='logo_data_center.png')}}" alt="logo">
                     <div class="project-details">
                         <a href="https://github.com/gtraldi/data-center-html-page" target="_blank">Site Data Center Verde</a>
                         <p>Site HTML/CSS sobre Data Center Verde</p>
@@ -41,7 +41,7 @@
             </li>
             <li>
                 <div class="project-item">
-                    <img src="img/logo_gestao.png" alt="logo">
+                    <img src="{{url_for('static', filename='logo_gestao.png')}}" alt="logo">
                     <div class="project-details">
                         <a href="https://github.com/gtraldi/abstract-project-management-system" target="_blank">Sistema de Gestão de Projetos</a>
                         <p>Projeto baseado na integração de Python e SQL (SQLite3)</p>
