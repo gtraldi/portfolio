@@ -1,41 +1,21 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio - Contatos</title>
-    <link rel="stylesheet" href="../static/contact.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/">Inicio</a></li>
-                <li><a href="/#about">Sobre</a></li>
-                <li><a href="projects">Projetos</a></li>
-                <li><a href="#contact">Contato</a></li>
-            </ul>
-        </nav>
-    </header>
+{% extends 'base.html' %}
 
-    <section id="contact">
-        <h2>Contato</h2>
-        <p>Você pode me contatar através dos seguintes canais:</p>
-        <ul>
-            <li>
-                <img src="{{url_for('static', filename='gmail_logo.webp')}}" alt="Gmail logo" class="contact-logo">
-                <span>Email:</span>
-                <a href="mailto:gtraldipereira@gmail.com">gtraldipereira@gmail.com</a>
-            </li>
-            <li>
-                <img src="{{url_for('static', filename='linkedin_logo.webp')}}" alt="LinkedIn logo" class="contact-logo">
-                <span>LinkedIn:</span>
-                <a href="https://www.linkedin.com/in/gustavo-traldi-ba63431a0/" target="_blank">Gustavo Traldi Pereira - LinkedIn</a>
-            </li>
-        </ul>
-    </section>
-
-    <footer>
-    </footer>
-</body>
-</html>
+{% block conteudo %}
+<section id="contact">
+    <h2>Contato</h2>
+    <p>Você pode me contatar através dos seguintes canais:</p>
+    <ul>
+        <li>
+            <img src="{{url_for('static', filename='gmail_logo.webp')}}" alt="Gmail logo" class="contact-logo">
+            <span>Email:</span>
+            <a href="mailto:gtraldipereira@gmail.com">gtraldipereira@gmail.com</a>
+        </li>
+        <li>
+            <img src="{{url_for('static', filename='linkedin_logo.webp')}}" alt="LinkedIn logo" class="contact-logo">
+            <span>LinkedIn:</span>
+            <a href="https://www.linkedin.com/in/gustavo-traldi-ba63431a0/" target="_blank">Gustavo Traldi Pereira - LinkedIn</a>
+        </li>
+    </ul>
+</section>
+<button id="mode-toggle">Modo Escuro</button>
+{% endblock %}

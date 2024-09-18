@@ -1,57 +1,37 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio - Meus Projetos</title>
-    <link rel="stylesheet" href="../static/projects.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="/">Inicio</a></li>
-                <li><a href="/#about">Sobre</a></li>
-                <li><a href="#projects">Projetos</a></li>
-                <li><a href="contact">Contato</a></li>
-            </ul>
-        </nav>
-    </header>
+{% extends 'base.html' %}
 
-    <section id="projects">
-        <h2>Projetos</h2>
-        <ul>
-            <li>
-                <div class="project-item">
-                    <img src="{{url_for('static', filename='logo_viagens.jpg')}}" alt="logo">
-                    <div class="project-details">
-                        <a href="https://github.com/gtraldi/travel-assistant-api" target="_blank">API Assistente de Viagens</a>
-                        <p>Desenvolvido com Python e Flask API</p>
-                    </div>
+{% block conteudo %}
+<section id="projects">
+    <h2>Projetos</h2>
+    <ul>
+        <li>
+            <div class="project-item">
+                <img src="{{url_for('static', filename='logo_viagens.jpg')}}" alt="logo">
+                <div class="project-details">
+                    <a href="https://github.com/gtraldi/travel-assistant-api" target="_blank">API Assistente de Viagens</a>
+                    <p>Desenvolvido com Python e Flask API</p>
                 </div>
-            </li>
-            <li>
-                <div class="project-item">
-                    <img src="{{url_for('static', filename='logo_data_center.png')}}" alt="logo">
-                    <div class="project-details">
-                        <a href="https://github.com/gtraldi/data-center-html-page" target="_blank">Site Data Center Verde</a>
-                        <p>Site HTML/CSS sobre Data Center Verde</p>
-                    </div>
+            </div>
+        </li>
+        <li>
+            <div class="project-item">
+                <img src="{{url_for('static', filename='logo_data_center.png')}}" alt="logo">
+                <div class="project-details">
+                    <a href="https://github.com/gtraldi/data-center-html-page" target="_blank">Site Data Center Verde</a>
+                    <p>Site HTML/CSS sobre Data Center Verde</p>
                 </div>
-            </li>
-            <li>
-                <div class="project-item">
-                    <img src="{{url_for('static', filename='logo_gestao.png')}}" alt="logo">
-                    <div class="project-details">
-                        <a href="https://github.com/gtraldi/abstract-project-management-system" target="_blank">Sistema de Gestão de Projetos</a>
-                        <p>Projeto baseado na integração de Python e SQL (SQLite3)</p>
-                    </div>
+            </div>
+        </li>
+        <li>
+            <div class="project-item">
+                <img src="{{url_for('static', filename='logo_gestao.png')}}" alt="logo">
+                <div class="project-details">
+                    <a href="https://github.com/gtraldi/abstract-project-management-system" target="_blank">Sistema de Gestão de Projetos</a>
+                    <p>Projeto baseado na integração de Python e SQL (SQLite3)</p>
                 </div>
-            </li>
-        </ul>
-    </section>
-
-    <footer>
-    </footer>
-</body>
-</html>
+            </div>
+        </li>
+    </ul>
+</section>
+<button id="mode-toggle">Modo Escuro</button>
+{% endblock %}
