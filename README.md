@@ -45,7 +45,7 @@ Para visualizar o projeto localmente, siga estes passos:
    python app.py
    ```
    
-   Para utilização no Windows utilize:
+   Caso utilize o Prompt de Comando do Windows execute:
 
    ```bash
    python.exe .\app.py\
