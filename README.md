@@ -2,7 +2,7 @@
 
 ## Descrição
 
-O **Portfolio Web** é um projeto pessoal desenvolvido para apresentar o portfólio de Gustavo. O site é uma vitrine para projetos, informações pessoais e formas de contato, projetado com foco em um design responsivo e moderno. Ele utiliza técnicas de design web e as melhores práticas para proporcionar uma experiência de usuário fluida e intuitiva.
+O **Portfolio Web** é um projeto pessoal desenvolvido para apresentar o meu portfólio. O site é uma vitrine para projetos, informações pessoais e formas de contato, projetado com foco em um design responsivo e moderno. Ele utiliza técnicas de design web e práticas para proporcionar uma experiência de usuário fluida e intuitiva.
 
 ## Ferramentas e Tecnologias Utilizadas
 
@@ -11,7 +11,6 @@ O **Portfolio Web** é um projeto pessoal desenvolvido para apresentar o portfó
 - **Bootstrap 5**: Framework CSS para criar uma interface responsiva e moderna com componentes pré-estilizados, como a navbar e o grid system.
 - **JavaScript**: Manipulação do DOM e implementação de funcionalidades interativas, como a troca de temas entre claro e escuro e a animação dos botões.
 - **Google Fonts**: Inclusão de fontes tipográficas como Montserrat e Roboto para uma aparência visual consistente e estilizada.
-- **Responsive Design**: Técnicas para garantir que o site seja visualizado corretamente em diferentes dispositivos e tamanhos de tela.
 - **Sass**: Pré-processador CSS utilizado para uma melhor organização e manutenção do código CSS (caso utilize na prática).
 
 ## Funcionalidades
@@ -23,10 +22,11 @@ O **Portfolio Web** é um projeto pessoal desenvolvido para apresentar o portfó
 
 ## Estrutura de Arquivos
 
-- `index.html`: Arquivo principal HTML, que inclui a estrutura básica do site.
-- `styles.css`: Arquivo CSS para estilização e responsividade do site.
-- `script.js`: Arquivo JavaScript para funcionalidades interativas.
-- `assets/`: Diretório para imagens e ícones utilizados no site.
+- `templates`: Diretório principal HTML, que inclui os arquivos com as estruturas básica do site.
+- `static`: Diretório contendo arquivo CSS para estilização e responsividade do site, e imagens/ícones utilizados no site.
+- `app.py`: Arquivo executável python, utilizado para rodar a API Flask.
+- `requirements.txt`: Arquivo com as dependências necessárias para rodar o projeto.
+- `.gitignore`: Arquivo de texto contendo quais arquivos ou pastas devem ser ignoradas no projeto.
 
 ## Instalação
 
