@@ -43,5 +43,11 @@ Para visualizar o projeto localmente, siga estes passos:
 3. Com o Python já instalado na máquina execute o comando a seguir:
    ```bash
    python app.py
+   ```
+   
+   Para utilização no Windows utilize:
+
+   ```bash
+   python.exe .\app.py\
 
 Dessa forma, será feito o deploy da API Flask e através do http local presente no terminal de comando é possível acessar localmente as páginas do projeto.
