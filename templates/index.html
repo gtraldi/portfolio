@@ -2,14 +2,17 @@
 
 {% block conteudo %}
 <section id="home">
-    <img id="perfil" src="{{url_for('static', filename='foto_perfil.png')}}" alt="foto_de_perfil">
-    <p>Olá, eu sou o Gustavo, um desenvolvedor Python,<br> apaixonado por criar soluções inovadoras na área de dados.</p>
+    <div class="container">
+        <img id="perfil" src="{{url_for('static', filename='foto_perfil.png')}}" alt="foto_de_perfil">
+        <p class="justified">Oi, eu sou o Gustavo!<br><br> Minha jornada como desenvolvedor Python começou com a curiosidade de entender como os dados podem contar histórias e guiar decisões. Desde então, tenho me dedicado a transformar dados brutos em soluções claras e impactantes. Cada projeto é uma nova oportunidade de aprender, inovar e ajudar empresas a enxergarem o potencial estratégico das suas informações. Se você acredita no poder dos dados tanto quanto eu, estou pronto para colaborar.</p>
+    </div>
 </section>
 
 <section id="about">
     <h2>Sobre mim</h2>
-    <p>Sou um programador com experiência em algumas tecnologias...</p>
-    <p>Você pode conferir mais sobre habilidades e experiências <a href="https://www.linkedin.com/in/gustavo-traldi-ba63431a0/" target="_blank">aqui</a>.</p>
+    <div class="container">
+        <p class="justified">Atualmente possuo experiência profissisonal em Engenharia de Dados além de diversas tecnologias, especialmente no desenvolvimento de scripts para automação de processos voltados a área de dados. Tenho atuado em projetos de captura, tratamento e disponibilização de dados tabulares e geoespaciais, além de gerenciamento, suporte e disponibilização dessas informções via bancos de dados. Atualmente, estou cursando Ciência da Computação, buscando constantemente soluções eficientes e escaláveis para transformar dados em insights valiosos. Você pode conferir mais sobre minha carreira <a href="https://www.linkedin.com/in/gustavo-traldi-ba63431a0/" target="_blank">aqui</a>.</p>
+    </div>
 </section>
-<button id="mode-toggle">Modo Escuro</button>
+<button id="mode-toggle"></button>
 {% endblock %}
