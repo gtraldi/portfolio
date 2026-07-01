@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="{{ 'en' if session.get('lang') == 'en' else 'pt' }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gustavo Traldi — Data Engineer specializing in AWS, Apache Airflow, and large-scale pipeline architecture.">
+    <meta name="author" content="Gustavo Traldi Pereira">
+    <meta name="keywords" content="Data Engineer, Python, Apache Airflow, dbt, AWS, PostgreSQL, ETL, Pipeline, Portfolio">
+    <title>{% block title %}Gustavo Traldi — Data Engineer{% endblock %}</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+</head>
+<body>
+
+    <!-- Mouse follow lighting aura -->
+    <div class="cursor-aura" id="cursor-aura" aria-hidden="true"></div>
+
+    <!-- CRT monitor scanning scanlines overlay -->
+    <div class="scanline-overlay" aria-hidden="true"></div>
+
+    <!-- Dot grid background -->
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <!-- Sticky Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="/#about" class="logo">Gustavo Traldi</a>
+
+            <div class="header-controls">
+                <button class="operator-switch" id="operator-mode-btn">
+                    <i class="fa-solid fa-terminal"></i>
+                    {{ 'Operator Mode' if session.get('lang') == 'en' else 'Modo Operador' }}
+                </button>
+                <a href="{{ url_for('set_language', lang='en' if session.get('lang') != 'en' else 'pt') }}" class="lang-btn">
+                    <i class="fa-solid fa-globe"></i>
+                    {{ 'EN' if session.get('lang') == 'en' else 'PT' }}
+                        </a>
+                    </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <div class="footer-inner">
+            <span>&copy; 2026 Gustavo Traldi</span>
+            <a href="https://github.com/gtraldi/portfolio" target="_blank" rel="noopener noreferrer" class="footer-link">
+                <i class="fa-brands fa-github"></i>
+                {{ 'source' if session.get('lang') == 'en' else 'código' }}
+            </a>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

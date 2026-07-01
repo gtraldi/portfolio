@@ -1,35 +1,644 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio - Inicio</title>
-    <link rel="stylesheet" href="../static/index.css">
-</head>
-<body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#home">Inicio</a></li>
-                <li><a href="#about">Sobre</a></li>
-                <li><a href="projects">Projetos</a></li>
-                <li><a href="contact">Contato</a></li>
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Responsive SVG Side Pipelines -->
+<div class="pipeline-svg-container" aria-hidden="true">
+    <svg style="position: absolute; left: 0; top: 0; width: 100%; height: 100%;" preserveAspectRatio="none">
+        <line x1="1.5%" y1="0" x2="1.5%" y2="100%" class="pipeline-wire" />
+        <line x1="1.5%" y1="0" x2="1.5%" y2="100%" class="pipeline-pulse" />
+        <line x1="98.5%" y1="0" x2="98.5%" y2="100%" class="pipeline-wire" />
+        <line x1="98.5%" y1="0" x2="98.5%" y2="100%" class="pipeline-pulse" />
+    </svg>
+</div>
+
+<!-- ==========================================
+     SECTION 1: HERO (Ingestion Stage)
+     ========================================== -->
+<section id="about" class="hero">
+    
+    <!-- Hero Left: Bio details -->
+    <div class="hero-left">
+        <div>
+            <span class="pipeline-step">01 // Ingestion</span>
+        </div>
+        <div class="status-pulse-container">
+            <span class="status-pulse"></span>
+            <span>DEVELOPER_ENVIRONMENT: ACTIVE // STACK: AWS, AIRFLOW, DBT</span>
+        </div>
+        <h1 class="hero-name">Gustavo Traldi</h1>
+        <p class="hero-role">
+            {{ 'Data Engineer · Cloud, Governance & Scale' if session.get('lang') == 'en' else 'Engenheiro de Dados · Cloud, Governança & Escala' }}
+        </p>
+        <p class="hero-desc">
+            {% if session.get('lang') == 'en' %}
+                Specializing in the AWS ecosystem, focusing on scalability, data governance, and pipeline observability. Experienced in large-scale ETL/ELT pipelines for geospatial and tabular datasets, processing up to 20M records per execution.
+            {% else %}
+                Especializado no ecossistema AWS, focado em escalabilidade, governança de dados e observabilidade de pipelines. Experiência em pipelines ETL/ELT para dados geoespaciais e tabulares em larga escala, processando até 20 milhões de registros por execução.
+            {% endif %}
+        </p>
+        <div class="hero-actions">
+            <a href="mailto:gtraldipereira@gmail.com" class="btn btn-filled">
+                <i class="fa-solid fa-envelope"></i>
+                {{ 'Get in touch' if session.get('lang') == 'en' else 'Entre em contato' }}
+            </a>
+            <a href="https://github.com/gtraldi" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                <i class="fa-brands fa-github"></i>
+                GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/gustavo-traldi-ba63431a0/" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+                <i class="fa-brands fa-linkedin-in"></i>
+                LinkedIn
+            </a>
+        </div>
+    </div>
+
+    <!-- Hero Right: Interactive Workspace Directory Explorer -->
+    <div class="hero-right">
+        <div class="workspace-explorer">
+            <div class="explorer-header">
+                <span class="explorer-title"><i class="fa-solid fa-folder-open"></i> sys_workspace // explorer</span>
+                <span class="branch-tag"><i class="fa-solid fa-code-branch"></i> main</span>
+            </div>
+            <div class="tree-root">
+                <!-- Root Folder -->
+                <div class="tree-item clickable tree-folder" data-folder-target="folder-root">
+                    <i class="fa-solid fa-folder-open"></i>
+                    <span style="font-weight: 700;">dev_workspace/</span>
+                    <span class="tree-meta">#root</span>
+                </div>
+                
+                <div class="tree-indent" id="folder-root">
+                    <!-- Profile folder -->
+                    <div class="tree-item clickable tree-folder" data-folder-target="folder-profile">
+                        <i class="fa-solid fa-folder-open"></i>
+                        <span style="font-weight: 600;">profile/</span>
+                        <span class="tree-meta">#bio</span>
+                    </div>
+                    <div class="tree-indent" id="folder-profile">
+                        <div class="tree-item clickable" data-scroll-target="#about">
+                            <i class="fa-solid fa-file-code" style="color: #60a5fa;"></i>
+                            <span style="font-weight: 500;">bio_info.py</span>
+                            <span class="tree-git-status modified">M</span>
+                            <span class="tree-meta">#about</span>
+                        </div>
+                    </div>
+
+                    <!-- Codebases folder -->
+                    <div class="tree-item clickable tree-folder" data-folder-target="folder-codebases">
+                        <i class="fa-solid fa-folder-open"></i>
+                        <span style="font-weight: 600;">codebases/</span>
+                        <span class="tree-meta">#work</span>
+                    </div>
+                    <div class="tree-indent" id="folder-codebases">
+                        <div class="tree-item clickable" data-scroll-target="#projects">
+                            <i class="fa-solid fa-file-code" style="color: #34d399;"></i>
+                            <span style="font-weight: 500;">git_projects.sql</span>
+                            <span class="tree-git-status modified">M</span>
+                            <span class="tree-meta">#projects</span>
+                        </div>
+                    </div>
+
+                    <!-- Database folder -->
+                    <div class="tree-item clickable tree-folder" data-folder-target="folder-database">
+                        <i class="fa-solid fa-folder-open"></i>
+                        <span style="font-weight: 600;">database/</span>
+                        <span class="tree-meta">#skills_dw</span>
+                    </div>
+                    <div class="tree-indent" id="folder-database">
+                        <div class="tree-item clickable" data-scroll-target="#skills">
+                            <i class="fa-solid fa-file-code" style="color: #a78bfa;"></i>
+                            <span style="font-weight: 500;">star_schema.db</span>
+                            <span class="tree-git-status untracked">U</span>
+                            <span class="tree-meta">#skills</span>
+                        </div>
+                    </div>
+
+                    <!-- Pipelines folder -->
+                    <div class="tree-item clickable tree-folder" data-folder-target="folder-pipelines">
+                        <i class="fa-solid fa-folder-open"></i>
+                        <span style="font-weight: 600;">pipelines/</span>
+                        <span class="tree-meta">#history</span>
+                    </div>
+                    <div class="tree-indent" id="folder-pipelines">
+                        <div class="tree-item clickable" data-scroll-target="#experience">
+                            <i class="fa-solid fa-file-lines" style="color: #f472b6;"></i>
+                            <span style="font-weight: 500;">career_experience.log</span>
+                            <span class="tree-git-status untracked">U</span>
+                            <span class="tree-meta">#experience</span>
+                        </div>
+                        <div class="tree-item clickable" data-scroll-target="#education">
+                            <i class="fa-solid fa-file-lines" style="color: #fb923c;"></i>
+                            <span style="font-weight: 500;">credentials.json</span>
+                            <span class="tree-meta">#education</span>
+                        </div>
+                        <div class="tree-item clickable" data-scroll-target="#contact">
+                            <i class="fa-solid fa-file-lines" style="color: #22d3ee;"></i>
+                            <span style="font-weight: 500;">contact_socket.sh</span>
+                            <span class="tree-meta">#contact</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Dynamic Code preview terminal window -->
+            <div class="explorer-preview" id="explorer-preview">
+                <span style="color: var(--text-faint);">// Hover over a file to preview its schema partition...</span>
+            </div>
+
+            <!-- Vercel/IDE inspired Deploy Footer -->
+            <div class="explorer-footer">
+                <div class="deploy-status">
+                    <span class="deploy-dot"></span>
+                    <span>deploy: stable (2m ago)</span>
+                </div>
+                <span>rev: 6a8f1b</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================
+     SECTION 2: PROJECTS (Transformation Stage)
+     ========================================== -->
+<section id="projects" class="section">
+    <div class="projects-head">
+        <div>
+            <span class="pipeline-step">02 // Transformation</span>
+            <p class="section-label" style="margin-top: 0.5rem;">{{ 'Selected Work' if session.get('lang') == 'en' else 'Trabalhos' }}</p>
+            <h2 class="section-title">{{ 'Projects' if session.get('lang') == 'en' else 'Projetos' }}</h2>
+            <p class="section-subtitle">
+                {{ 'Things I\'ve built and shipped. Click a card to auto-run its pipeline or query details in the CLI.' if session.get('lang') == 'en' else 'Projetos que desenvolvi e entreguei. Clique em um card para rodar a pipeline ou obter detalhes.' }}
+            </p>
+        </div>
+        <a href="https://github.com/gtraldi" target="_blank" rel="noopener noreferrer" class="gh-link">
+            {{ 'View all' if session.get('lang') == 'en' else 'Ver todos' }}
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <div class="projects-grid">
+        {% for project in projects %}
+        <div class="project-card" data-project-key="{% if 'Taxi' in project.title or 'ELT' in project.title %}taxi{% elif 'Assistant' in project.title or 'Viagens' in project.title %}travel{% else %}mgmt{% endif %}">
+            <div>
+                <div class="project-top">
+                    <span class="project-name">{{ project.title }}</span>
+                    <div class="project-meta">
+                        <!-- SVG Ingestion Sparkline -->
+                        <div class="sparkline-container" title="Continuous Data Flow">
+                            <svg class="sparkline">
+                                <path d="M 0 11 Q 15 2 30 11 T 60 11" />
+                            </svg>
+                        </div>
+                        <a href="{{ project.link }}" target="_blank" rel="noopener noreferrer" class="project-gh" title="GitHub">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+                <p class="project-desc">
+                    {{ project.desc_en if session.get('lang') == 'en' else project.desc_pt }}
+                </p>
+            </div>
+            <div class="project-tags">
+                {% for tag in project.tags %}
+                <span class="tech-tag">
+                    {% if tag == 'Python' %}<i class="devicon-python-plain colored"></i>
+                    {% elif tag == 'PostgreSQL' %}<i class="devicon-postgresql-plain colored"></i>
+                    {% elif tag == 'Docker' %}<i class="devicon-docker-plain colored"></i>
+                    {% elif tag == 'Flask' %}<i class="devicon-flask-original colored"></i>
+                    {% elif tag == 'HTML5' %}<i class="devicon-html5-plain colored"></i>
+                    {% elif tag == 'CSS3' %}<i class="devicon-css3-plain colored"></i>
+                    {% elif tag == 'JavaScript' %}<i class="devicon-javascript-plain colored"></i>
+                    {% elif tag == 'Git' %}<i class="devicon-git-plain colored"></i>
+                    {% elif tag == 'SQLite' %}<i class="devicon-sqlite-plain colored"></i>
+                    {% elif tag == 'Pytest' %}<i class="fa-solid fa-vial" style="color: #10b981;"></i>
+                    {% elif tag == 'Apache Airflow' %}<i class="devicon-apacheairflow-plain colored"></i>
+                    {% elif tag == 'dbt' %}<i class="fa-solid fa-cube" style="color: #6366f1;"></i>
+                    {% else %}<i class="fa-solid fa-code" style="color: #818cf8;"></i>
+                    {% endif %}
+                    {{ tag }}
+                </span>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Relocated Unified Control Center under the Project Cards -->
+    <div class="pipeline-dashboard" id="control-center-panel">
+        <!-- Tabs Menu (With Global Dropdown Selector) -->
+        <div class="dashboard-tabs">
+            <div style="display: flex; align-items: center;">
+                <button class="dashboard-tab active-tab" data-tab-target="tab-cli">
+                    <i class="fa-solid fa-terminal" style="margin-right: 0.35rem;"></i> Live CLI
+                </button>
+                <button class="dashboard-tab" data-tab-target="tab-dag">
+                    <i class="fa-solid fa-circle-nodes" style="margin-right: 0.35rem;"></i> Airflow DAG
+                </button>
+                <button class="dashboard-tab" data-tab-target="tab-dq">
+                    <i class="fa-solid fa-square-check" style="margin-right: 0.35rem;"></i> Data Quality
+                </button>
+            </div>
+            <select id="project-pipeline-select" class="dashboard-select" style="margin-right: 0.5rem;">
+                <option value="taxi">nyc-taxi-elt-pipeline</option>
+                <option value="travel">travel-assistant-api</option>
+                <option value="mgmt">project-mgmt-system</option>
+            </select>
+        </div>
+
+        <!-- Tab 1: Terminal console with Interactive SQL input -->
+        <div class="tab-content active-content" id="tab-cli">
+            <div style="font-family: var(--font-mono); font-size: 0.65rem; color: var(--accent-cyan); margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.05em;">
+                // Quick Ingress Actions:
+            </div>
+            <div id="cli-actions-container" style="display: flex; gap: 0.4rem; margin-bottom: 0.85rem; flex-wrap: wrap;">
+                <!-- CLI Action Buttons loaded dynamically via JS -->
+            </div>
+            <div class="terminal-body" id="terminal-output">
+                <!-- Loaded dynamically via JS -->
+            </div>
+            <div class="terminal-input-row">
+                <span class="terminal-input-prompt">gtraldi@local-dev:~$</span>
+                <input type="text" id="terminal-query-input" class="terminal-input" placeholder="Type SQL query or HELP;..." autocomplete="off">
+            </div>
+        </div>
+
+        <!-- Tab 2: DAG Node Runner Graph -->
+        <div class="tab-content" id="tab-dag">
+            <div class="dag-header-sub">
+                <span class="dag-title-sub">pipeline_orchestrator // airflow_tasks</span>
+                <span class="console-path">~/dags/airflow</span>
+            </div>
+            <div class="dag-nodes-container" id="dag-nodes-container">
+                <!-- Rendered dynamically via main.js -->
+            </div>
+        </div>
+
+        <!-- Tab 3: Data Quality Soda/Great Expectations reports -->
+        <div class="tab-content" id="tab-dq">
+            <div class="dag-header-sub">
+                <span class="dag-title-sub">great_expectations // assertion_rules</span>
+                <span class="console-path">~/quality/logs</span>
+            </div>
+            <div class="dq-panel" id="dq-assertion-panel">
+                <!-- Populated dynamically during execution -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================
+     SECTION 3: SKILLS (Storage Stage & Star Schema)
+     ========================================== -->
+<section id="skills" class="section">
+    <span class="pipeline-step">03 // Storage & Structuring</span>
+    <p class="section-label" style="margin-top: 0.5rem;">{{ 'Expertise' if session.get('lang') == 'en' else 'Especialidades' }}</p>
+    <h2 class="section-title">{{ 'Dimensional Modeling (Star Schema)' if session.get('lang') == 'en' else 'Modelagem Dimensional (Star Schema)' }}</h2>
+    <p class="section-subtitle">
+        {{ 'Relational entity diagram representing technical skills. Hover over dimensions to highlight connections.' if session.get('lang') == 'en' else 'Diagrama relacional estruturado mapeando habilidades. Passe o mouse sobre as tabelas para acender as conexões.' }}
+    </p>
+
+    <!-- Star Schema Dimensional Modeling Representation -->
+    <div class="star-schema-wrapper">
+        <svg class="er-diagram-svg" viewBox="0 0 1000 500" preserveAspectRatio="none">
+            <!-- Line connectors from dimensions to fact table -->
+            <path id="wire-skills" class="connector-wire" d="M 240 112 H 400" />
+            <path id="wire-tools" class="connector-wire" d="M 760 112 H 600" />
+            <path id="wire-cloud" class="connector-wire" d="M 240 387 H 400" />
+            <path id="wire-ops" class="connector-wire" d="M 760 387 H 600" />
+        </svg>
+
+        <!-- Central Fact Table -->
+        <div class="er-table t-fact-exp" id="table-fact-exp">
+            <div class="er-table-header">
+                <span>fact_experience</span>
+                <i class="fa-solid fa-key" style="color: var(--accent-cyan);"></i>
+            </div>
+            <div class="er-table-body">
+                <div class="er-table-row">
+                    <span class="er-field"><span class="er-key">PK</span> <span>exp_id</span></span>
+                    <span class="er-type">INT</span>
+                </div>
+                <div class="er-table-row">
+                    <span class="er-field"><span class="er-key">FK</span> <span style="font-weight: 600;">skill_id</span></span>
+                    <span class="er-type">INT</span>
+                </div>
+                <div class="er-table-row">
+                    <span class="er-field"><span class="er-key">FK</span> <span style="font-weight: 600;">tool_id</span></span>
+                    <span class="er-type">INT</span>
+                </div>
+                <div class="er-table-row">
+                    <span class="er-field"><span class="er-key">FK</span> <span style="font-weight: 600;">platform_id</span></span>
+                    <span class="er-type">INT</span>
+                </div>
+                <div class="er-table-row">
+                    <span class="er-field"><span class="er-key">FK</span> <span style="font-weight: 600;">ops_id</span></span>
+                    <span class="er-type">INT</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dim Languages Table (Top Left) -->
+        <div class="er-table t-dim-lang" id="table-dim-lang" data-wire="wire-skills">
+            <div class="er-table-header">
+                <span>dim_languages</span>
+                <i class="fa-solid fa-table" style="color: var(--accent-indigo);"></i>
+            </div>
+            <div class="er-table-body">
+                <div class="er-table-row">
+                    <span class="er-field"><span class="er-key">PK</span> <span>skill_id</span></span>
+                    <span class="er-type">INT</span>
+                </div>
+                <div class="er-table-row">
+                    <span class="er-field"><span class="er-key"></span> <span>Python</span></span>
+                    <span class="er-type">VARCHAR</span>
+                </div>
+                <div class="er-table-row">
+                    <span class="er-field"><span class="er-key"></span> <span>SQL</span></span>
+                    <span class="er-type">VARCHAR</span>
+                </div>
+                <div class="er-table-row">
+                    <span class="er-field"><span class="er-key"></span> <span>JavaScript</span></span>
+                    <span class="er-type">VARCHAR</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dim Orchestrators Table (Top Right) -->
+        <div class="er-table t-dim-pipe" id="table-dim-pipe" data-wire="wire-tools">
+            <div class="er-table-header">
+                <span>dim_tools</span>
+                <i class="fa-solid fa-table" style="color: var(--accent-indigo);"></i>
+            </div>
+            <div class="er-table-body">
+                <div class="er-table-row">
+                    <span class="er-field"><span class="er-key">PK</span> <span>tool_id</span></span>
+                    <span class="er-type">INT</span>
+                </div>
+                <div class="er-table-row">
+                    <span class="er-field"><span class="er-key"></span> <span>Airflow</span></span>
+                    <span class="er-type">VARCHAR</span>
+                </div>
+                <div class="er-table-row">
+                    <span class="er-field"><span class="er-key"></span> <span>dbt</span></span>
+                    <span class="er-type">VARCHAR</span>
+                </div>
+                <div class="er-table-row">
+                    <span class="er-field"><span class="er-key"></span> <span>AWS Lambda</span></span>
+                    <span class="er-type">VARCHAR</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dim Cloud & Data Platforms Table (Bottom Left) -->
+        <div class="er-table t-dim-cloud" id="table-dim-cloud" data-wire="wire-cloud">
+            <div class="er-table-header">
+                <span>dim_cloud_ops</span>
+                <i class="fa-solid fa-table" style="color: var(--accent-indigo);"></i>
+            </div>
+            <div class="er-table-body">
+                <div class="er-table-row">
+                    <span class="er-field"><span class="er-key">PK</span> <span>platform_id</span></span>
+                    <span class="er-type">INT</span>
+                </div>
+                <div class="er-table-row">
+                    <span class="er-field"><span class="er-key"></span> <span>AWS S3/EC2</span></span>
+                    <span class="er-type">VARCHAR</span>
+                </div>
+                <div class="er-table-row">
+                    <span class="er-field"><span class="er-key"></span> <span>PostgreSQL</span></span>
+                    <span class="er-type">VARCHAR</span>
+                </div>
+                <div class="er-table-row">
+                    <span class="er-field"><span class="er-key"></span> <span>SQLite</span></span>
+                    <span class="er-type">VARCHAR</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dim Devops Table (Bottom Right) -->
+        <div class="er-table t-dim-ops" id="table-dim-ops" data-wire="wire-ops">
+            <div class="er-table-header">
+                <span>dim_devops</span>
+                <i class="fa-solid fa-table" style="color: var(--accent-indigo);"></i>
+            </div>
+            <div class="er-table-body">
+                <div class="er-table-row">
+                    <span class="er-field"><span class="er-key">PK</span> <span>ops_id</span></span>
+                    <span class="er-type">INT</span>
+                </div>
+                <div class="er-table-row">
+                    <span class="er-field"><span class="er-key"></span> <span>Docker</span></span>
+                    <span class="er-type">VARCHAR</span>
+                </div>
+                <div class="er-table-row">
+                    <span class="er-field"><span class="er-key"></span> <span>Jenkins</span></span>
+                    <span class="er-type">VARCHAR</span>
+                </div>
+                <div class="er-table-row">
+                    <span class="er-field"><span class="er-key"></span> <span>Pytest</span></span>
+                    <span class="er-type">VARCHAR</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================
+     SECTION 4: TIMELINE (Deployment Stage)
+     ========================================== -->
+<section id="experience" class="section">
+    <span class="pipeline-step">04 // Production & Deployment</span>
+    <p class="section-label" style="margin-top: 0.5rem;">{{ 'Career' if session.get('lang') == 'en' else 'Carreira' }}</p>
+    <h2 class="section-title">{{ 'Experience' if session.get('lang') == 'en' else 'Experiência' }}</h2>
+    <p class="section-subtitle">
+        {{ 'Where I\'ve worked and what I\'ve built in real environments.' if session.get('lang') == 'en' else 'Onde trabalhei e o que construí em ambientes reais.' }}
+    </p>
+
+    <div class="timeline">
+        <!-- Serasa Experian -->
+        <div class="tl-entry">
+            <div class="tl-dot"></div>
+            <div class="tl-head">
+                <h3 class="tl-title">
+                    {{ 'Data Engineer' if session.get('lang') == 'en' else 'Engenheiro de Dados' }}
+                    <span class="tl-company">· Serasa Experian</span>
+                </h3>
+                <span class="tl-date">Nov 2024 – {{ 'Present' if session.get('lang') == 'en' else 'Atual' }}</span>
+            </div>
+            
+            <div class="tl-metrics-row">
+                <span class="metric-badge"><i class="fa-solid fa-network-wired"></i> 450+ Active DAGs</span>
+                <span class="metric-badge"><i class="fa-solid fa-database"></i> 20M Records/Execution</span>
+                <span class="metric-badge"><i class="fa-solid fa-bolt"></i> 99%+ Deploy Speedup</span>
+                <span class="metric-badge"><i class="fa-solid fa-shield-halved"></i> 99.8% Success Rate</span>
+            </div>
+
+            <p class="tl-summary">
+                {% if session.get('lang') == 'en' %}
+                    Agribusiness data platform team — maintaining and distributing datasets feeding internal and external downstream consumer systems.
+                {% else %}
+                    Equipe de plataforma de dados do Agronegócio — mantendo e distribuindo dados para produtos e times consumidores internos e externos.
+                {% endif %}
+            </p>
+            <ul class="tl-list">
+                {% if session.get('lang') == 'en' %}
+                    <li>Managed 450+ Apache Airflow DAGs across 120 sources, supporting volumes up to 20M records and 10GB+ per dataset.</li>
+                    <li>99%+ reduction in production deploy times by decoupling a critical API component.</li>
+                    <li>Developed 30+ AWS Lambda functions for data access and integration across multiple consumer profiles.</li>
+                    <li>30% increase in pipeline stability through observability ecosystem implementation.</li>
+                    <li>Processed large-scale geospatial datasets using Python and GeoPandas for territorial risk modeling.</li>
+                    <li>Modeled and maintained PostgreSQL databases ensuring structural consistency and governance.</li>
+                    <li>~100 monthly deploys via Jenkins with code reviews, PR approvals, and environment promotions.</li>
+                {% else %}
+                    <li>Gestão de +450 DAGs no Apache Airflow, cobrindo 120 fontes e suportando até 20M de registros e 10GB+ por dataset.</li>
+                    <li>Redução de +99% no tempo de deploy em produção via desacoplamento de componente crítico de API.</li>
+                    <li>Desenvolvimento de 30+ funções AWS Lambda para disponibilização e integração de dados.</li>
+                    <li>Aumento de 30% na estabilidade dos pipelines com ecossistema de observabilidade.</li>
+                    <li>Processamento de dados geoespaciais em larga escala com Python e GeoPandas para modelagem de risco territorial.</li>
+                    <li>Modelagem e manutenção de bases PostgreSQL com consistência estrutural e governança.</li>
+                    <li>~100 deploys mensais via Jenkins com revisão de código, PRs e promoção entre ambientes.</li>
+                {% endif %}
             </ul>
-        </nav>
-    </header>
+        </div>
 
-    <section id="home">
-        <img id="perfil" src="{{url_for('static', filename='foto_perfil.png')}}" alt="foto_de_perfil">
-        <p>Olá, eu sou o Gustavo, um desenvolvedor Python,<br> apaixonado por criar soluções inovadoras na área de dados.</p>
-    </section>
+        <!-- Verx -->
+        <div class="tl-entry">
+            <div class="tl-dot"></div>
+            <div class="tl-head">
+                <h3 class="tl-title">
+                    {{ 'Data Analyst' if session.get('lang') == 'en' else 'Analista de Dados' }}
+                    <span class="tl-company">· Verx Tecnologia</span>
+                </h3>
+                <span class="tl-date">Aug 2022 – Nov 2024</span>
+            </div>
 
-    <section id="about">
-        <h2>Sobre mim</h2>
-        <p>Sou um programador com experiência em algumas tecnologias. Minha jornada começou em 2022 e desde então, trabalhei em diversos projetos com foco na Engenharia de Dados que me ajudaram a entender mais sobre a área e a refinar minhas habilidades dentro desse mundo dos dados e informações.</p>
-        <p>Você pode conferir mais sobre habilidades e experiências <a href="https://www.linkedin.com/in/gustavo-traldi-ba63431a0/" target="_blank">aqui</a>.</p>
-    </section>
+            <div class="tl-metrics-row">
+                <span class="metric-badge"><i class="fa-solid fa-code"></i> ~60 Ingestion Sources</span>
+                <span class="metric-badge"><i class="fa-solid fa-triangle-exclamation"></i> 32% Failure Reduction</span>
+                <span class="metric-badge"><i class="fa-solid fa-gears"></i> 45% Manual Effort Reduction</span>
+            </div>
 
-    <footer>
-    </footer>
-</body>
-</html>
+            <p class="tl-summary">
+                {% if session.get('lang') == 'en' %}
+                    DataOps team managing and distributing data pipelines across ~60 sources for 40+ active clients.
+                {% else %}
+                    Equipe de DataOps mantendo pipelines de dados para ~40 clientes, cobrindo ~60 fontes.
+                {% endif %}
+            </p>
+            <ul class="tl-list">
+                {% if session.get('lang') == 'en' %}
+                    <li>Migrated pipelines from legacy EC2/cronjobs to Apache Airflow — 32% failure reduction.</li>
+                    <li>Migrated AWS Lambda functions from JavaScript to Python — 10% performance gain.</li>
+                    <li>45% reduction in manual operational efforts through PostgreSQL modeling and automation.</li>
+                    <li>Developed RESTful APIs with Flask for internal system integration.</li>
+                    <li>Structured the technical knowledge base on Confluence.</li>
+                {% else %}
+                    <li>Migração de pipelines de EC2/cronjob para Apache Airflow com redução de 32% em falhas.</li>
+                    <li>Migração de AWS Lambdas de JavaScript para Python com ganho de 10% em performance.</li>
+                    <li>Redução de 45% no esforço manual via modelagem PostgreSQL e automação de rotinas.</li>
+                    <li>Desenvolvimento de APIs RESTful com Flask para integração entre sistemas.</li>
+                    <li>Estruturação da base de conhecimento técnico no Confluence.</li>
+                {% endif %}
+            </ul>
+        </div>
+
+        <!-- Freelancer -->
+        <div class="tl-entry">
+            <div class="tl-dot"></div>
+            <div class="tl-head">
+                <h3 class="tl-title">
+                    {{ 'Freelance Developer' if session.get('lang') == 'en' else 'Desenvolvedor Freelancer' }}
+                </h3>
+                <span class="tl-date">Jul 2021 – Nov 2022</span>
+            </div>
+            <p class="tl-summary">
+                {% if session.get('lang') == 'en' %}
+                    On-demand software automation and data modeling routines.
+                {% else %}
+                    Automações de software sob demanda e rotinas de modelagem de dados.
+                {% endif %}
+            </p>
+            <ul class="tl-list">
+                {% if session.get('lang') == 'en' %}
+                    <li>Python scripts for extraction, consolidation, and cleaning of multi-source datasets.</li>
+                    <li>Web scraping automation and system integrations reducing manual processes.</li>
+                    <li>PostgreSQL database modeling and maintenance.</li>
+                {% else %}
+                    <li>Scripts Python para extração, consolidação e tratamento de dados de múltiplas fontes.</li>
+                    <li>Automação de Web Scraping e integração entre sistemas.</li>
+                    <li>Modelagem e manutenção de bancos PostgreSQL.</li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================
+     SECTION 5: EDUCATION & CREDENTIALS
+     ========================================== -->
+<section id="education" class="section">
+    <span class="section-label">{{ 'Background' if session.get('lang') == 'en' else 'Formação' }}</span>
+    <h2 class="section-title">{{ 'Education & Credentials' if session.get('lang') == 'en' else 'Formação & Credenciais' }}</h2>
+    <p class="section-subtitle">
+        {{ 'Academic background, certifications and language proficiency.' if session.get('lang') == 'en' else 'Formação acadêmica, certificações e proficiência em idiomas.' }}
+    </p>
+
+    <div class="cred-grid">
+        <div class="cred-card">
+            <h3 class="cred-card-title">{{ 'Education' if session.get('lang') == 'en' else 'Formação Acadêmica' }}</h3>
+            <div class="cred-item">
+                <span class="cred-main">{{ "Bachelor's in Computer Science" if session.get('lang') == 'en' else 'Bacharelado em Ciência da Computação' }}</span>
+                <span class="cred-sub">Centro Universitário Max Planck (UniMAX)</span>
+                <span class="cred-note">Aug 2023 – Dec 2026 · 7th semester</span>
+            </div>
+        </div>
+
+        <div class="cred-card">
+            <h3 class="cred-card-title">{{ 'Credentials' if session.get('lang') == 'en' else 'Certificações & Idiomas' }}</h3>
+            <ul class="cred-list">
+                <li><i class="fa-solid fa-certificate" style="color: #ff6b4a;"></i> Associate Data Engineer in SQL — DataCamp</li>
+                <li><i class="fa-solid fa-certificate" style="color: #ff6b4a;"></i> dbt Fundamentals — dbt Labs</li>
+                <li><i class="fa-solid fa-language" style="color: #22d3ee;"></i> {{ 'English C1 — Valencia College' if session.get('lang') == 'en' else 'Inglês C1 — Valencia College' }}</li>
+                <li><i class="fa-solid fa-language" style="color: #22d3ee;"></i> {{ 'Portuguese — Native' if session.get('lang') == 'en' else 'Português — Nativo' }}</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================
+     SECTION 6: CONTACT
+     ========================================== -->
+<section id="contact" class="section" style="border-top: 1px solid var(--border);">
+    <div class="contact-wrap">
+        <p class="section-label">{{ 'Get in touch' if session.get('lang') == 'en' else 'Contato' }}</p>
+        <h2 class="section-title">{{ "Let's collaborate" if session.get('lang') == 'en' else 'Vamos colaborar' }}</h2>
+
+        <p class="contact-text">
+            {% if session.get('lang') == 'en' %}
+                I'm open to new opportunities, data engineering collaborations, and backend challenges. Feel free to reach out.
+            {% else %}
+                Estou aberto a novas oportunidades, colaborações em engenharia de dados e desafios de backend. Fique à vontade para entrar em contato.
+            {% endif %}
+        </p>
+
+        <a href="mailto:gtraldipereira@gmail.com" class="btn btn-filled" style="margin-top: 0.5rem;">
+            <i class="fa-solid fa-envelope"></i>
+            {{ 'Send email' if session.get('lang') == 'en' else 'Enviar e-mail' }}
+        </a>
+
+        <div class="contact-links">
+            <a href="https://github.com/gtraldi" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <i class="fa-brands fa-github"></i> GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/gustavo-traldi-ba63431a0/" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <i class="fa-brands fa-linkedin-in"></i> LinkedIn
+            </a>
+            <a href="mailto:gtraldipereira@gmail.com" class="contact-link">
+                <i class="fa-solid fa-envelope"></i> gtraldipereira@gmail.com
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
